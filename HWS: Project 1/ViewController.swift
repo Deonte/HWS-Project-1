@@ -29,6 +29,8 @@ class ViewController: UITableViewController {
                 pictures.append(item)
             }
         }
+        // Sort pictures starting at 0033
+        pictures.sort(by: <)
         print(pictures)
     }
 
@@ -51,6 +53,8 @@ extension  ViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             // 2: Success! Set its selectedImage property
             vc.selectedImage = pictures[indexPath.row]
+            vc.totalPictures = pictures.count
+            vc.pictureNumber = indexPath.row + 1
             // 3: now push it onto the navigation controller
             navigationController?.pushViewController(vc, animated: true)
         }
